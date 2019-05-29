@@ -104,7 +104,7 @@ async def messages(ctx):
 async def musichelp(ctx):
     return
 
-@client.command(pass_context = True, aliases=["p"])
+@client.command(pass_context = True, aliases=["p", "clear"])
 async def play(ctx):
     return
 
