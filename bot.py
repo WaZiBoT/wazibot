@@ -334,7 +334,7 @@ async def on_member_remove(member):
 async def jointest(ctx):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == 'welcome-bye':
+        if channel.name == 'wealcome-bye':
             url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(member)
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(title=f':tada: :tada: Welcome **{member.name}** to **{member.server.name}** :tada: :tada:', description='Please Check <#552842038564093972> and enjoy your stay. :)', color = discord.Color((r << 16) + (g << 8) + b))
@@ -349,7 +349,7 @@ async def jointest(ctx):
 async def leavetest(ctx):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == 'welcome-bye':
+        if channel.name == 'welacome-bye':
             url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(member)
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(title=f' :confounded: :confounded: **{member.name}** just left **{member.server.name}** :confounded: :confounded:', description='We will miss you a lot. :(', color = discord.Color((r << 16) + (g << 8) + b))
