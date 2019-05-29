@@ -100,6 +100,22 @@ async def rank(ctx):
 async def messages(ctx):
     return
 
+@client.command(pass_context = True)
+async def musichelp(ctx):
+    return
+
+@client.command(pass_context = True, aliases=["p"])
+async def play(ctx):
+    return
+
+@client.command(pass_context = True, aliases=["s", "l", "leave", "skip"])
+async def stop(ctx):
+    return
+
+@client.command(pass_context = True, aliases=["vol", "np", "q", "queue"])
+async def volume(ctx):
+    return
+
 @client.command(pass_context = True) 
 async def banlist(ctx):
     if ctx.message.author.server_permissions.ban_members or ctx.message.author.id=="519122918773620747":
@@ -739,6 +755,7 @@ async def help(ctx):
     embed.add_field(name = '>fun',value ='Shows Some Fun Commands.' ,inline = False)
     embed.add_field(name = '>general',value ='Shows Some general Commands.' ,inline = False)	
     embed.add_field(name = '>moderation',value ='Shows Some Commands That Can Be Used By Mods/Admins.' ,inline = False)
+    embed.add_field(name = '>musichelp',value ='Shows Some music Commands.' ,inline = False)
     embed.set_footer(text=f'Powered by|WaZiBoT.xyz')
     await client.say(embed=embed)
 
