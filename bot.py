@@ -461,7 +461,7 @@ async def dankmeme(ctx):
                 await client.say(embed=embed)		
 
 @client.command(pass_context = True, aliases=["news"])
-@commands.has_role('News Reporters')
+@commands.has_role('News')
 async def postnews(ctx, *, msg: str=None):
     member = ctx.message.author
     for channel in member.server.channels:
