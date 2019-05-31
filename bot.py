@@ -49,7 +49,7 @@ async def on_ready():
     print('working properly xD')
     client.loop.create_task(status_task())
     channel = client.get_channel("552868494140506125")
-    await client.send_message(channel, ":white_check_mark: Restarted Successful!")
+    await client.send_message(channel, ":white_check_mark: I am up!")
 
 @client.event
 async def on_message(message):
