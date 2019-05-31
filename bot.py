@@ -49,7 +49,7 @@ async def on_ready():
     print('working properly xD')
     client.loop.create_task(status_task())
     channel = client.get_channel("552868494140506125")
-    await client.send_message(channel, ":white_check_mark: Restart Successful!")
+    await client.send_message(channel, ":white_check_mark: Restarted Successful!")
 
 @client.event
 async def on_message(message):
@@ -104,7 +104,7 @@ async def messages(ctx):
 async def musichelp(ctx):
     return
 
-@client.command(pass_context = True, aliases=["p", "clear"])
+@client.command(pass_context = True, aliases=["p", "clear", "ascii", "weather"])
 async def play(ctx):
     return
 
@@ -112,7 +112,7 @@ async def play(ctx):
 async def stop(ctx):
     return
 
-@client.command(pass_context = True, aliases=["vol", "np", "q", "queue"])
+@client.command(pass_context = True, aliases=["vol", "np", "q", "queue", "pause", "resume"])
 async def volume(ctx):
     return
 
@@ -202,7 +202,7 @@ async def idea(ctx, *, msg: str=None):
     else:
         await client.delete_message(ctx.message)
         reactions = ["✅", "❎", "❓"]
-        channel = client.get_channel("582094501401722920")
+        channel = client.get_channel("583891872934658048")
         url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(ctx.message.author)
         r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
         embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
@@ -303,17 +303,13 @@ async def on_reaction_remove(reaction, user: discord.Member=None):
 	
 @client.event
 async def on_member_join(member):
-    for channel in member.server.channels:
-        if channel.name == 'waelcome-bye':
-            url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(member)
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(title=f':tada: :tada: Welcome **{member.name}** to **{member.server.name}** :tada: :tada:', description='Please Check <#552842038564093972> and enjoy your stay. :)', color = discord.Color((r << 16) + (g << 8) + b))
-            embed.add_field(name='__Total Members__', value='Now We Have **{}** Members.'.format(str(member.server.member_count)), inline=False)
-            embed.set_thumbnail(url = "https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif")
-            embed.set_image(url = url)
-            embed.set_footer(text=f'{client.user.display_name}.xyz', icon_url=f'{client.user.avatar_url}')
-            embed.timestamp = datetime.datetime.utcnow()
-            await client.send_message(channel, embed=embed)
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(title=f':tada: :tada: Welcome **{member.name}** to **{member.server.name}** :tada: :tada:', description='Please Check <#552842038564093972> and enjoy your stay. :)', color = discord.Color((r << 16) + (g << 8) + b))
+    embed.add_field(name='Your Join Position', value='**{}**'.format(str(member.server.member_count)), inline=False)
+    embed.set_thumbnail(url = "https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif")
+    embed.set_footer(text=f'{client.user.display_name}.xyz', icon_url=f'{client.user.avatar_url}')
+    embed.timestamp = datetime.datetime.utcnow()
+    await client.send_message(member, embed=embed)
 
 @client.event
 async def on_member_remove(member):
@@ -465,7 +461,7 @@ async def dankmeme(ctx):
 async def postnews(ctx, *, msg: str=None):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == "📻news": #bot-office
+        if channel.name == "》news": #bot-office
             if msg is None:
                 await client.say(":x: **Oof! Try:** `>postnews <your message>`")  
             else:
@@ -583,7 +579,7 @@ async def howgay(ctx, user: discord.Member = None):
 async def announce(ctx, *, msg: str=None):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == "🔔announcements":
+        if channel.name == "》announcements":
           if msg is None:
             await client.say(':x: **INVALID COMMANDS WERE GIVEN. USE THIS COMMAND LIKE THIS:** `>announce <text>`')
           else:
@@ -600,24 +596,24 @@ async def announce(ctx, *, msg: str=None):
                   await client.say(':x: You Need To Have `Administrator` Permissions To Use This Command.')
 
 @client.command(pass_context = True)
-async def send(ctx, *, msg: str=None):
+async def send(ctx, channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
-    for channel in member.server.channels:
-        if channel.name == "🌐global-chat":
-          if msg is None:
-            await client.say(':x: **Oof! Try:** `>send <text>`')
-          else:
-              if member.server_permissions.administrator:
-                  await client.send_message(channel, "{}".format(msg))
-                  await client.delete_message(ctx.message)
-              else:
-                  await client.say(':x: You Need To Have `Administrator` Permissions To Use This Command.')			
+    if msg is None:
+        await client.say(':x: **Oof! Try:** `>send #channel <text>`')
+    if msg is None:
+        await client.say(':x: **Oof! Try:** `>send #channel <text>`')	
+    else:
+        if member.server_permissions.kick_members:
+            await client.send_message(channel, "{}".format(msg))
+            await client.delete_message(ctx.message)
+        else:
+            await client.say(':x: You Need To Have `kick_members` Permissions To Use This Command.')			
 
 @client.command(pass_context = True)
 async def updates(ctx, *, msg: str=None):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == "📦updates":
+        if channel.name == "》updates":
           if msg is None:
             await client.say('**INVALID COMMANDS WERE GIVEN. USE THIS COMMAND LIKE THIS:** `>updates <text>`')
           else:
@@ -699,7 +695,7 @@ async def joke(ctx):
 @client.command(pass_context = True, aliases = ["complain"])
 async def report(ctx, member: discord.Member=None, *, msg: str=None):
     for channel in member.server.channels:
-        if channel.name == "💢-complaints":
+        if channel.name == "》complaints":
           if member is None:
             await client.say(':x: **Oof! Try:** `>complain @user <reason>`')
           if msg is None:
@@ -736,9 +732,9 @@ async def dm(ctx, identification:str=None, *, msg: str=None):
             url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(ctx.message.author)
             user = await client.get_user_info(identification)
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed=discord.Embed(title="**❯ __You Got Message!__**", description="**{0}** sent you message from **{1}**!".format(ctx.message.author, ctx.message.server), color = discord.Color((r << 16) + (g << 8) + b))
-            embed.add_field(name = '**❯** __**Message:**__',value ='***{}***'.format(msg),inline = False)
-            embed.add_field(name = '**❯** __**Channel:**__',value ='{}'.format(ctx.message.channel.mention),inline = False)
+            embed=discord.Embed(title="》 **__You Got Message!__**", description="**{0}** sent you message from **{1}**!".format(ctx.message.author, ctx.message.server), color = discord.Color((r << 16) + (g << 8) + b))
+            embed.add_field(name = '》__**Message:**__',value ='***{}***'.format(msg),inline = False)
+            embed.add_field(name = '》__**Channel:**__',value ='{}'.format(ctx.message.channel.mention),inline = False)
             embed.set_thumbnail(url=url)
             embed.set_footer(text=f'Sent by: {ctx.message.author.display_name}', icon_url=f'{ctx.message.author.avatar_url}')
             embed.timestamp = datetime.datetime.utcnow()
@@ -1177,7 +1173,7 @@ async def suggest(ctx, *, msg: str=None):
     else:
         await client.delete_message(ctx.message)
         reactions = ["✅", "❎", "❓"]
-        channel = client.get_channel("552854076422094879")
+        channel = client.get_channel("583671483931426816")
         url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(ctx.message.author)
         r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
         embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
@@ -1195,7 +1191,7 @@ async def suggest(ctx, *, msg: str=None):
 async def reply(ctx, *, msg: str=None):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == '📥suggestions':
+        if channel.name == '》suggestions':
           if msg is None:
             await client.say('**INVALID COMMANDS WERE GIVEN. USE THIS COMMAND LIKE THIS:** `>reply <text>`')
           else:
