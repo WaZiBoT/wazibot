@@ -793,6 +793,9 @@ async def fun(ctx):
     embed.add_field(name = '>answer',value ='Example: `>answer <your_answer_in_one_word_or_number>`' ,inline = False)
     embed.add_field(name = '>cowsay',value ='Example: `>cowsay hi`' ,inline = False)
     embed.add_field(name = '>tuxsay',value ='Example: `>tuxsay hi`' ,inline = False)
+    embed.add_field(name = '>ascii',value ='Example: `>ascii hi`' ,inline = False)
+    embed.add_field(name = '>weather',value ='Example: `>weather <place>`' ,inline = False)
+    embed.add_field(name = '>emojify',value ='Example: `>emojify hi`' ,inline = False)
     embed.set_footer(text=f'Powered by|WaZiBoT.xyz')	
     await client.say(embed=embed)
 
