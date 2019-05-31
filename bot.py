@@ -603,11 +603,11 @@ async def send(ctx, channel: discord.Channel=None, *, msg: str=None):
     if msg is None:
         await client.say(':x: **Oof! Try:** `>send #channel <text>`')	
     else:
-        if member.server_permissions.kick_members:
+        if member.server_permissions.administrator:
             await client.send_message(channel, "{}".format(msg))
             await client.delete_message(ctx.message)
         else:
-            await client.say(':x: You Need To Have `kick_members` Permissions To Use This Command.')			
+            await client.say(':x: You Need To Have `administrator` Permissions To Use This Command.')			
 
 @client.command(pass_context = True)
 async def updates(ctx, *, msg: str=None):
