@@ -590,6 +590,8 @@ async def send(ctx, channel: discord.Channel=None, *, msg: str=None):
         await client.say(':x: **Oof! Try:** `>send #channel <text>`')	
     else:
         if member.server_permissions.administrator or ctx.message.author.id=="519122918773620747":
+            await client.send_typing(channel)
+            await asyncio.sleep(4)	
             await client.send_message(channel, "{}".format(msg))
             await client.delete_message(ctx.message)
         else:
