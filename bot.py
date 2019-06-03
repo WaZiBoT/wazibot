@@ -739,7 +739,7 @@ async def help(ctx):
     embed.add_field(name = '>fun',value ='Shows Some Fun Commands.' ,inline = False)
     embed.add_field(name = '>general',value ='Shows Some general Commands.' ,inline = False)	
     embed.add_field(name = '>moderation',value ='Shows Some Commands That Can Be Used By Mods/Admins.' ,inline = False)
-    embed.add_field(name = '>musichelp',value ='Shows Some music Commands.' ,inline = False)
+    embed.add_field(name = '>music',value ='Shows Some music Commands.' ,inline = False)
     embed.set_footer(text=f'Powered by|WaZiBoT.xyz')
     await client.say(embed=embed)
 
@@ -766,7 +766,7 @@ async def fun(ctx):
     embed.add_field(name = '>meme',value ='Example: `>meme`' ,inline = False)
     embed.add_field(name = '>dankmeme',value ='Example: `>dankmeme`' ,inline = False)	
     embed.add_field(name = '>discordmeme',value ='Example: `>discordmeme`' ,inline = False)
-    embed.add_field(name = '>rank [@user]',value ='Example: `>rank`' ,inline = False)
+    embed.add_field(name = '>level [@user]',value ='Example: `>level @user#6666`' ,inline = False)
     embed.set_footer(text=f'Powered by|WaZiBoT.xyz')	
     await client.say(embed=embed)
 
@@ -776,7 +776,6 @@ async def fun(ctx):
     embed.add_field(name = '>tweet',value ='Example: `>tweet text`' ,inline = False)
     embed.add_field(name = '>minesweeper',value ='Example: `>minesweeper`' ,inline = False)
     embed.add_field(name = '>poll',value ='Example: `>poll "your question" option-1 option-2`' ,inline = False)
-    embed.add_field(name = '>bitcoin',value ='Example: `>bitcoin`' ,inline = False)
     embed.add_field(name = '>riddle',value ='Example: `>riddle`' ,inline = False)
     embed.add_field(name = '>answer',value ='Example: `>answer <your_answer_in_one_word_or_number>`' ,inline = False)
     embed.add_field(name = '>cowsay',value ='Example: `>cowsay hi`' ,inline = False)
