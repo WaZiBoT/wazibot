@@ -92,7 +92,7 @@ async def lol(ctx):
 async def fnstats(ctx):
     return
 
-@client.command(pass_context = True)
+@client.command(pass_context = True, aliases=["level"])
 async def rank(ctx):
     return
 
