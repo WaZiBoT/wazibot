@@ -827,6 +827,7 @@ async def moderation(ctx):
     embed.add_field(name = '>unban',value ='Example: `>unban user_id`' ,inline = False)
     embed.add_field(name = '>unlock',value ='Example: `>unlock #channel`' ,inline = False)
     embed.add_field(name = '>lock',value ='Example: `>lock #channel`' ,inline = False)
+    embed.add_field(name = '>warn @user reason',value ='Example: `>warn @user spam`' ,inline = False)
     embed.add_field(name = '>superlock',value ='Example: `>superlock #channel`' ,inline = False)
     embed.add_field(name = '>reply',value ='Example: `>reply your_messages`' ,inline = False)
     embed.add_field(name = '>updates',value ='Example: `>updates your_messages`' ,inline = False)
@@ -1061,42 +1062,8 @@ async def unmute(ctx, member: discord.Member=None, mutetime=None):
         await client.say('Sorry! You need to have `Kick_members` permission to use this command.')
 
 @client.command(pass_context = True)
-async def warn(ctx, userName: discord.User=None,*, message:str=None):
-    if userName is None:
-        await client.say('Please tag a person to warn user. Example- **>warn @user <reason>**')
-        return
-    if message is None:
-        await client.say('Please provide a reason to warn user. Example- **>warn @user <reason>**')
-        return
-    else:	
-        if ctx.message.author.server_permissions.kick_members:
-            if userName==ctx.message.author:
-                return await client.say(":x: You can't warn yourself.")
-            if userName.server_permissions.kick_members:
-                return await client.say(":x: You can't warn mods.")
-            else:
-                await client.delete_message(ctx.message)
-                await client.say("***:white_check_mark: Alright! {0} Has Been Warned!*** ".format(userName))
-                for channel in userName.server.channels:
-                    if channel.name == 'logs':
-                        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                        embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-                        embed.set_thumbnail(url=userName.avatar_url)
-                        embed.add_field(name = 'USER WARNED',value ='***A User Was Warned!***',inline = False)
-                        embed.add_field(name = '__**WARNED USER:**__',value ='**{}**'.format(userName.mention),inline = False)
-                        embed.add_field(name = '__**WARNED USER ID:**__',value ='**{}**'.format(userName.id),inline = False)
-                        embed.add_field(name = '__**WARNED BY:**__',value ='**{}**'.format(ctx.message.author),inline = False)
-                        embed.add_field(name = '__**REASON:**__',value ='**{}**'.format(message),inline = False)
-                        embed.add_field(name = '__**WARNED IN:**__',value ='{}'.format(ctx.message.channel.mention),inline = False)
-                        embed.timestamp = datetime.datetime.utcnow()
-                        await client.send_message(channel, embed=embed)
-                        role = discord.utils.get(userName.server.roles, name='Muted')
-                        await client.add_roles(userName, role)
-                        await asyncio.sleep(10)
-                        role = discord.utils.get(userName.server.roles, name='Muted')
-                        await client.remove_roles(userName, role)    
-        else:
-            await client.say(":x: You need to have `Kick_Members` permission to use this command.")	
+async def warn(ctx):
+    await client.delete_message(ctx.message)	
 
 @client.command(pass_context = True)
 async def ban(ctx, userName: discord.User, *, reason:str=None):
