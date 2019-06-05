@@ -740,6 +740,7 @@ async def help(ctx):
     embed.add_field(name = '>general',value ='Shows Some general Commands.' ,inline = False)	
     embed.add_field(name = '>moderation',value ='Shows Some Commands That Can Be Used By Mods/Admins.' ,inline = False)
     embed.add_field(name = '>music',value ='Shows Some music Commands.' ,inline = False)
+    embed.add_field(name = '>economy',value ='Shows Some economy Commands.' ,inline = False)	
     embed.set_footer(text=f'Powered by|WaZiBoT.xyz')
     await client.say(embed=embed)
 
