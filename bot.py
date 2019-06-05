@@ -744,6 +744,32 @@ async def help(ctx):
     await client.say(embed=embed)
 
 @client.command(pass_context = True)
+async def economy(ctx):
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embed.set_thumbnail(url=client.user.avatar_url)
+    embed.add_field(name = '**ECONOMY COMMANDS**',value ='OwO, You are rich xD.' ,inline = False)
+    embed.add_field(name = '>daily',value ='Collect your daily bal.' ,inline = False)
+    embed.add_field(name = '>weekly',value ='Collect your weekly bal.' ,inline = False)	
+    embed.add_field(name = '>hourly',value ='Collect your hourly bal.' ,inline = False)
+    embed.add_field(name = '>search',value ='Find money xD.' ,inline = False)
+    #embed.add_field(name = '>search',value ='Find money xD.' ,inline = False)
+    embed.add_field(name = '>beg',value ='Beg money xD.' ,inline = False)
+    embed.add_field(name = '>work',value ='Work for money.' ,inline = False)
+    embed.add_field(name = '>bal [@user]',value ='Check your bal.' ,inline = False)
+    embed.add_field(name = '>pay @user <bal>',value ='Give money to your friend.' ,inline = False)	
+    embed.set_footer(text=f'WaZiBoT.xyz | Economy')
+    await client.say(embed=embed)	
+
+@client.command(pass_context = True, aliases=["weekly", "hourly", "search", "beg"])
+async def daily(ctx):
+    return
+
+@client.command(pass_context = True, aliases=["bal", "lb", "pay", "setbal", "removebal"])
+async def work(ctx):
+    return
+
+@client.command(pass_context = True)
 async def fun(ctx):
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
