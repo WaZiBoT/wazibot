@@ -680,32 +680,32 @@ async def joke(ctx):
     else:
         await client.say('```css\nWhat A Cruel World!```')	
 
-@client.command(pass_context = True, aliases = ["complain"])
-async def report(ctx, member: discord.Member=None, *, msg: str=None):
-    for channel in member.server.channels:
-        if channel.name == "》complaints":
-          if member is None:
-            await client.say(':x: **Oof! Try:** `>complain @user <reason>`')
-          if msg is None:
-            await client.say(":x: **Oof! Try:** `>complain @user <reason>`")  
-          else:
-              await client.delete_message(ctx.message)
-              reactions = ["✅", "❎", "❓"]
-              url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(member)
-              crl = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(client.user)
-              vrl = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(ctx.message.author)
-              r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-              embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-              embed.set_author(name = "Complaint by {}".format(ctx.message.author.name), icon_url=vrl)
-              embed.set_thumbnail(url=url)
-              embed.add_field(name = "Complainted User:", value = "{}".format(member.name), inline=False)
-              embed.add_field(name = "Complainted User ID:", value = "{}".format(member.id), inline=False)
-              embed.add_field(name = "Complaint:", value = "{}\n\n✅Good | ❎Bad |❓Inappropriate".format(msg), inline=False)
-              embed.set_footer(text=f'{client.user.display_name}.xyz', icon_url=f'{crl}')
-              embed.timestamp = datetime.datetime.utcnow()
-              xd = await client.send_message(channel, embed=embed)
-              for emoji in reactions:
-                await client.add_reaction(xd, emoji)	
+# @client.command(pass_context = True, aliases = ["complain"])
+#async def report(ctx, member: discord.Member=None, *, msg: str=None):
+   # for channel in member.server.channels:
+    #    if channel.name == "》complaints":
+     #     if member is None:
+      #      await client.say(':x: **Oof! Try:** `>complain @user <reason>`')
+       #   if msg is None:
+        #    await client.say(":x: **Oof! Try:** `>complain @user <reason>`")  
+         # else:
+         #     await client.delete_message(ctx.message)
+          #    reactions = ["✅", "❎", "❓"]
+           #   url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(member)
+            #  crl = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(client.user)
+             # vrl = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(ctx.message.author)
+             # r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+              #embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+             # embed.set_author(name = "Complaint by {}".format(ctx.message.author.name), icon_url=vrl)
+             # embed.set_thumbnail(url=url)
+              #embed.add_field(name = "Complainted User:", value = "{}".format(member.name), inline=False)
+              #embed.add_field(name = "Complainted User ID:", value = "{}".format(member.id), inline=False)
+              #embed.add_field(name = "Complaint:", value = "{}\n\n✅Good | ❎Bad |❓Inappropriate".format(msg), inline=False)
+          #    embed.set_footer(text=f'{client.user.display_name}.xyz', icon_url=f'{crl}')
+           #   embed.timestamp = datetime.datetime.utcnow()
+            #  xd = await client.send_message(channel, embed=embed)
+         #     for emoji in reactions:
+          #      await client.add_reaction(xd, emoji)	
 			
 @client.command(pass_context = True)
 async def dm(ctx, identification:str=None, *, msg: str=None):
@@ -760,7 +760,8 @@ async def economy(ctx):
     embed.add_field(name = '>bal [@user]',value ='Check your bal.' ,inline = False)
     embed.add_field(name = '>pay @user <bal>',value ='Give money to your friend.' ,inline = False)
     embed.add_field(name = '>store',value ='View store.' ,inline = False)
-    embed.add_field(name = '>buy',value ='Example: `>buy adventure`' ,inline = False)	
+    embed.add_field(name = '>buy',value ='Example: `>buy adventure`' ,inline = False)
+    embed.add_field(name = '>jackpot',value ='Example: `>buy jackpot`' ,inline = False)
     embed.set_footer(text=f'WaZiBoT.xyz | WaZiConomy')
     await client.say(embed=embed)	
 
@@ -853,7 +854,7 @@ async def general(ctx):
     embed.add_field(name = '>serverinfo',value ='Example: `>serverinfo`' ,inline = False)
     embed.add_field(name = '>whois',value ='Example: `>whois @user`' ,inline = False)
     embed.add_field(name = '>invites',value ='Example: `>invites @user`' ,inline = False)
-    embed.add_field(name = '>complain',value ='Example: `>complain @user Reason`' ,inline = False)
+   #embed.add_field(name = '>complain',value ='Example: `>complain @user Reason`' ,inline = False)
     embed.add_field(name = '>fact',value ='Example: `>fact`\n`>facts`' ,inline = False)
     embed.add_field(name = '>idea',value ='Example: `>idea text`' ,inline = False)
     embed.add_field(name = '>rep',value ='Example: `>rep @user`' ,inline = False)
