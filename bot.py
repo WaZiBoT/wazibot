@@ -761,7 +761,7 @@ async def economy(ctx):
     embed.add_field(name = '>pay @user <bal>',value ='Give money to your friend.' ,inline = False)
     embed.add_field(name = '>store',value ='View store.' ,inline = False)
     embed.add_field(name = '>buy',value ='Example: `>buy adventure`' ,inline = False)
-    embed.add_field(name = '>jackpot',value ='Example: `>buy jackpot`' ,inline = False)
+    embed.add_field(name = '>jackpot',value ='Example: `>jackpot`' ,inline = False)
     embed.set_footer(text=f'WaZiBoT.xyz | WaZiConomy')
     await client.say(embed=embed)	
 
