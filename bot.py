@@ -754,19 +754,21 @@ async def economy(ctx):
     embed.add_field(name = '>weekly',value ='Collect your weekly bal.' ,inline = False)	
     embed.add_field(name = '>hourly',value ='Collect your hourly bal.' ,inline = False)
     embed.add_field(name = '>search',value ='Find money xD.' ,inline = False)
-    #embed.add_field(name = '>search',value ='Find money xD.' ,inline = False)
+    embed.add_field(name = '>rob @user',value ='Try to rob xD.' ,inline = False)
     embed.add_field(name = '>beg',value ='Beg money xD.' ,inline = False)
     embed.add_field(name = '>work',value ='Work for money.' ,inline = False)
     embed.add_field(name = '>bal [@user]',value ='Check your bal.' ,inline = False)
-    embed.add_field(name = '>pay @user <bal>',value ='Give money to your friend.' ,inline = False)	
-    embed.set_footer(text=f'WaZiBoT.xyz | Economy')
+    embed.add_field(name = '>pay @user <bal>',value ='Give money to your friend.' ,inline = False)
+    embed.add_field(name = '>store',value ='View store.' ,inline = False)
+    embed.add_field(name = '>buy',value ='Example: `>buy adventure`' ,inline = False)	
+    embed.set_footer(text=f'WaZiBoT.xyz | WaZiConomy')
     await client.say(embed=embed)	
 
 @client.command(pass_context = True, aliases=["weekly", "hourly", "search", "beg"])
 async def daily(ctx):
     return
 
-@client.command(pass_context = True, aliases=["bal", "lb", "pay", "setbal", "removebal"])
+@client.command(pass_context = True, aliases=["bal", "lb", "pay", "setbal", "clearwarn", "removebal"])
 async def work(ctx):
     return
 
@@ -853,7 +855,10 @@ async def general(ctx):
     embed.add_field(name = '>invites',value ='Example: `>invites @user`' ,inline = False)
     embed.add_field(name = '>complain',value ='Example: `>complain @user Reason`' ,inline = False)
     embed.add_field(name = '>fact',value ='Example: `>fact`\n`>facts`' ,inline = False)
-    embed.add_field(name = '>idea',value ='Example: `>idea text`' ,inline = False)	
+    embed.add_field(name = '>idea',value ='Example: `>idea text`' ,inline = False)
+    embed.add_field(name = '>rep',value ='Example: `>rep @user`' ,inline = False)
+    embed.add_field(name = '>reps [@user]',value ='Example: `>reps`' ,inline = False)
+    embed.add_field(name = '>warns [@user]',value ='Example: `>warns`' ,inline = False)
     embed.set_footer(text=f'Powered by|WaZiBoT.xyz')
     await client.say(embed=embed)	
 
