@@ -98,10 +98,6 @@ async def rank(ctx):
 async def messages(ctx):
     return
 
-@client.command(pass_context = True)
-async def musichelp(ctx):
-    return
-
 @client.command(pass_context = True, aliases=["p", "clear", "ascii", "weather"])
 async def play(ctx):
     return
@@ -737,8 +733,25 @@ async def help(ctx):
     embed.add_field(name = '>fun',value ='Shows Some Fun Commands.' ,inline = False)
     embed.add_field(name = '>general',value ='Shows Some general Commands.' ,inline = False)	
     embed.add_field(name = '>moderation',value ='Shows Some Commands That Can Be Used By Mods/Admins.' ,inline = False)
-    embed.add_field(name = '>music',value ='Shows Some music Commands.' ,inline = False)
+    embed.add_field(name = '>music',value ='Shows Some music Commands. Credit: <@477463812786618388>' ,inline = False)
     embed.add_field(name = '>economy',value ='Shows Some economy Commands.' ,inline = False)	
+    embed.set_footer(text=f'Powered by|WaZiBoT.xyz')
+    await client.say(embed=embed)
+
+@client.command(pass_context = True)
+async def music(ctx):
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embed.set_thumbnail(url=client.user.avatar_url)
+    embed.add_field(name = '**MUSIC COMMANDS**',value ='List of Music-Commands. Credit: <@477463812786618388>' ,inline = False)
+    embed.add_field(name = '>play [song_name]',value ='Eg: `>play alan walker alone`' ,inline = False)
+    embed.add_field(name = '>np',value ='Now Playing.' ,inline = False)	
+    embed.add_field(name = '>stop',value ='Disconnect from voice.' ,inline = False)
+    embed.add_field(name = '>queue',value ='Shows current queue.' ,inline = False)
+    embed.add_field(name = '>skip',value ='Skip current song.' ,inline = False)
+    embed.add_field(name = '>pause',value ='Pause a song.' ,inline = False)
+    embed.add_field(name = '>resume',value ='Resume a song.' ,inline = False)
+    embed.add_field(name = '>skip',value ='Skip current song.' ,inline = False)
     embed.set_footer(text=f'Powered by|WaZiBoT.xyz')
     await client.say(embed=embed)
 
