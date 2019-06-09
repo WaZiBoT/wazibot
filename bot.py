@@ -284,7 +284,7 @@ async def on_reaction_remove(reaction, user: discord.Member=None):
 @client.event
 async def on_member_join(member):
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(title=f':tada: :tada: Welcome **{member.name}** to **{member.server.name}** :tada: :tada:', description='Please Check <#552842038564093972> and enjoy your stay. :)', color = discord.Color((r << 16) + (g << 8) + b))
+    embed = discord.Embed(title=f':tada: :tada: Welcome **{member.name}** to **{member.server.name}** :tada: :tada:', description='Please Check <#583694901573845001> and enjoy your stay. :)', color = discord.Color((r << 16) + (g << 8) + b))
     embed.add_field(name='Your Join Position', value='**{}**'.format(str(member.server.member_count)), inline=False)
     embed.set_thumbnail(url = "https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif")
     embed.set_footer(text=f'{client.user.display_name}.xyz', icon_url=f'{client.user.avatar_url}')
