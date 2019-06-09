@@ -233,11 +233,11 @@ async def on_reaction_add(reaction, user: discord.Member=None):
   for channel in user.server.channels:
     if channel.name == 'logs':
         logchannel = channel
-        url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(user)
+       # url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(user)
         r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
         embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
         embed.set_author(name='REACTION ADDED', icon_url=reaction.message.server.icon_url)
-        embed.set_thumbnail(url=url)
+        embed.set_thumbnail(url=user.avatar_url)
         embed.add_field(name = 'User:',value ='{}'.format(user.mention),inline = False)
         embed.add_field(name = 'User ID:',value ='{}'.format(user.id),inline = False)
         embed.add_field(name = 'Message:',value = '{}'.format(reaction.message.content))
