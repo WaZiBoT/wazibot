@@ -33,7 +33,7 @@ prevRiddleLine = 0
 
 async def status_task():
     while True:
-        await client.change_presence(game=discord.Game(name='with WASIF', type=0))
+        await client.change_presence(game=discord.Game(name='Annoying WASIF', type=0))
         await asyncio.sleep(10)
         await client.change_presence(game=discord.Game(name='>help', type=2))
         await asyncio.sleep(10)
@@ -874,31 +874,28 @@ async def general(ctx):
     embed.set_footer(text=f'Powered by|WaZiBoT.xyz')
     await client.say(embed=embed)	
 
-@client.command(pass_context=True)      
+@client.command(pass_context = True)
 async def serverinfo(ctx):
-
-    server = ctx.message.server
-    roles = [x.name for x in server.role_hierarchy]
-    role_length = len(roles)
-
-    if role_length > 50: 
-        roles = roles[:50]
-        roles.append('>>>> Displaying[50/%s] Roles'%len(roles))
-
-    roles = ', '.join(roles);
-    channelz = len(server.channels);
-    time = str(server.created_at); time = time.split(' '); time= time[0];
+    roles = [x.name for x in ctx.message.server.role_hierarchy]
+    sroles = ', '.join(roles)
+    channels = len(ctx.message.server.channels)
+    link = await client.create_invite(destination=ctx.message.channel, xkcd=True, max_uses=100)
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    join = discord.Embed(description= '%s '%(str(server)),title = 'Server Name', color = discord.Color((r << 16) + (g << 8) + b));
-    join.set_thumbnail(url = server.icon_url);
-    join.add_field(name = '__Server Owner__', value = str(server.owner) + "\n **__Owner's ID__**  " + server.owner.id);
-    join.add_field(name = '__Server ID__', value = str(server.id))
-    join.add_field(name = '__Members Count Of This Server__', value = str(server.member_count));
-    join.add_field(name = '__Text/Voice Channels in this server__', value = str(channelz));
-    join.add_field(name = '__Available Roles (%s)__'%str(role_length), value = roles);
-    join.set_footer(text ='Server was Created on: %s'%time);
-
-    return await client.say(embed = join);
+    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embed.set_author(name = "SERVER INFO", icon_url=ctx.message.author.avatar_url)
+    embed.set_thumbnail(url=ctx.message.server.icon_url)
+    embed.add_field(name = "Server Name", value = f"{ctx.message.server}", inline = False)
+    embed.add_field(name = "Server ID", value = f"{ctx.message.server.id}", inline = False)
+    embed.add_field(name = "Server Owner", value = f"{ctx.message.server.owner.mention}", inline = False)
+    embed.add_field(name = "Owner ID", value = f"{ctx.message.server.owner.id}", inline = False)
+    embed.add_field(name = "Total Members", value = str(ctx.message.server.member_count), inline = False)
+    embed.add_field(name = "Total Channel/Category", value = str(channels), inline = False)
+    embed.add_field(name = "Roles", value = sroles, inline = False)
+    embed.add_field(name = "Invite Link", value = f"{link}", inline = False)
+    embed.add_field(name = "Created On", value = str(ctx.message.server.created_at))
+    embed.set_footer(text = f"{client.user.display_name}", icon_url=client.user.avatar_url)
+    embed.timestamp = datetime.datetime.utcnow()
+    await client.say(embed=embed)
 
 @client.command(pass_context = True)
 async def lock(ctx, channelname: discord.Channel=None):
