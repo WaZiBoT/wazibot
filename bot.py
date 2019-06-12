@@ -559,7 +559,7 @@ async def howgay(ctx, user: discord.Member = None):
 async def announce(ctx, *, msg: str=None):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == "》announcements":
+        if channel.name == "⨳│announcements":
           if msg is None:
             await client.say(':x: **INVALID COMMANDS WERE GIVEN. USE THIS COMMAND LIKE THIS:** `>announce <text>`')
           else:
@@ -595,7 +595,7 @@ async def send(ctx, channel: discord.Channel=None, *, msg: str=None):
 async def updates(ctx, *, msg: str=None):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == "》updates":
+        if channel.name == "⨳│updates":
           if msg is None:
             await client.say('**INVALID COMMANDS WERE GIVEN. USE THIS COMMAND LIKE THIS:** `>updates <text>`')
           else:
