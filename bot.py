@@ -1222,9 +1222,9 @@ async def suggest(ctx, *, msg: str=None):
 async def reply(ctx, *, msg: str=None):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == '》suggestions':
+        if channel.name == '⨳│suggestions':
           if msg is None:
-            await client.say('**INVALID COMMANDS WERE GIVEN. USE THIS COMMAND LIKE THIS:** `>reply <text>`')
+            await client.say(':x: **INVALID COMMANDS WERE GIVEN. USE THIS COMMAND LIKE THIS:** `>reply <text>`')
           else:
               if member.server_permissions.kick_members:
                   await client.delete_message(ctx.message)
