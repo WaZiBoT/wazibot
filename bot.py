@@ -18,7 +18,7 @@ import logging
 import sys
 import traceback
  
-client = commands.Bot(description="WaZiBoT Is Awesome", command_prefix=(">"))
+client = commands.Bot(description="WaZiBoT Is Awesome", command_prefix=(">:miofddgsagfer<"))
 client.remove_command('help')
 
 start_time = datetime.datetime.utcnow()
@@ -31,21 +31,11 @@ riddleLine = 0
 riddleGuessesLeft = 2
 prevRiddleLine = 0
 
-async def status_task():
-    while True:
-        await client.change_presence(game=discord.Game(name='Annoying WASIF', type=0))
-        await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name='>:?help', type=2))
-        await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name=str(len(set(client.get_all_members())))+' WaZifers', type=3))
-        await asyncio.sleep(10)
-
 @client.event
 async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('working properly xD')
-    client.loop.create_task(status_task())
     channel = client.get_channel("552868494140506125")
     await client.send_message(channel, ":white_check_mark: I am up!")
 
