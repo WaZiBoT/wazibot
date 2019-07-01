@@ -35,7 +35,7 @@ async def status_task():
     while True:
         await client.change_presence(game=discord.Game(name='Annoying WASIF', type=0))
         await asyncio.sleep(10)
-        await client.change_presence(game=discord.Game(name='>help', type=2))
+        await client.change_presence(game=discord.Game(name='>:?help', type=2))
         await asyncio.sleep(10)
         await client.change_presence(game=discord.Game(name=str(len(set(client.get_all_members())))+' WaZifers', type=3))
         await asyncio.sleep(10)
