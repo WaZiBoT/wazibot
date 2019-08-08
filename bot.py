@@ -18,7 +18,7 @@ import logging
 import sys
 import traceback
  
-client = commands.Bot(description="WaZiBoT Is Awesome", command_prefix=(">:miofddgsagfer<"))
+client = commands.Bot(description="WaZiBoT Is Awesome", command_prefix=(">"))
 client.remove_command('help')
 
 start_time = datetime.datetime.utcnow()
@@ -71,44 +71,6 @@ async def on_message(message):
             await client.delete_message(message)
             await client.send_message(message.channel, ":x: {} No inappropriate words!".format(message.author.mention))		
 		
-	
-@client.command(pass_context = True)
-async def lol(ctx):
-    return
-
-@client.command(pass_context = True)
-async def fnstats(ctx):
-    return
-
-@client.command(pass_context = True, aliases=["level"])
-async def rank(ctx):
-    return
-
-@client.command(pass_context = True)
-async def messages(ctx):
-    return
-
-@client.command(pass_context = True, aliases=["p", "clear", "ascii", "weather"])
-async def play(ctx):
-    return
-
-@client.command(pass_context = True, aliases=["s", "l", "leave", "skip"])
-async def stop(ctx):
-    return
-
-@client.command(pass_context = True, aliases=["vol", "np", "q", "queue", "pause", "resume"])
-async def volume(ctx):
-    return
-
-@client.command(pass_context = True) 
-async def banlist(ctx):
-    if ctx.message.author.server_permissions.ban_members or ctx.message.author.id=="519122918773620747":
-        x = await client.get_bans(ctx.message.server)
-        x = '\n'.join([y.name for y in x]) 
-        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-        embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-        embed.add_field(name = "BANNED IDIOTS", value = "```py\n{0}```".format(x), inline=False)
-        await client.say(embed=embed)
 
 @client.command(pass_context = True)
 async def riddle(ctx):
@@ -206,18 +168,6 @@ async def discordmeme(ctx):
                 embed.timestamp = datetime.datetime.utcnow()
                 await client.say(embed=embed)
 
-@client.command(pass_context=True, aliases=["ms"])
-async def minesweeper(ctx):
-    url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(ctx.message.author)	
-    choices = ['||:zero:|| ||:bomb:|| ||:one:|| ||:eight:|| ||:one:||\n||:bomb:|| ||:six:|| ||:bomb:|| ||:one:|| ||:bomb:||\n||:one:|| ||:eight:|| ||:four:|| ||:three:|| ||:five:||\n||:bomb:|| ||:two:|| ||:one:|| ||:bomb:|| ||:nine:||', '||:one:|| ||:one:|| ||:two:|| ||:bomb:|| ||:nine:||\n||:bomb:|| ||:one:|| ||:three:|| ||:four:|| ||:six:||\n||:bomb:|| ||:one:|| ||:bomb:|| ||:one:|| ||:five:||\n||:bomb:|| ||:one:|| ||:eight:|| ||:bomb:|| ||:seven:||',  '||:one:|| ||:zero:|| ||:two:|| ||:eight:|| ||:six:||\n||:bomb:|| ||:nine:|| ||:one:|| ||:four:|| ||:three:||\n||:bomb:|| ||:two:|| ||:one:|| ||:bomb:|| ||:five:||\n||:bomb:|| ||:bomb:|| ||:one:|| ||:one:|| ||:seven:||', '||:nine:|| ||:bomb:|| ||:one:|| ||:three:|| ||:eight:||\n||:bomb:|| ||:bomb:|| ||:six:|| ||:one:|| ||:bomb:||\n||:seven:|| ||:four:|| ||:one:|| ||:bomb:|| ||:five:||\n||:bomb:|| ||:eight:|| ||:zero:|| ||:one:|| ||:nine:||', '||:zero:|| ||:one:|| ||:nine:|| ||:three:|| ||:eight:||\n||:one:|| ||:bomb:|| ||:bomb:|| ||:bomb:|| ||:bomb:||\n||:seven:|| ||:one:|| ||:four:|| ||:two:|| ||:five:||\n||:six:|| ||:one:|| ||:eight:|| ||:zero:|| ||:bomb:||']
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-    embed.set_thumbnail(url=url)
-    embed.add_field(name = '__**WAZEEPER GAME**__',value=random.choice(choices),inline = False)
-    embed.set_footer(text=f'Gamewith{client.user.display_name}.xyz', icon_url=f'{client.user.avatar_url}')
-    embed.timestamp = datetime.datetime.utcnow()
-    await client.say(embed=embed)		
-
 @client.event
 async def on_reaction_add(reaction, user: discord.Member=None):
   for channel in user.server.channels:
@@ -300,7 +250,7 @@ async def on_member_remove(member):
 async def jointest(ctx):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == 'wealcome-bye':
+        if channel.name == 'welcome-bye':
             url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(member)
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(title=f':tada: :tada: Welcome **{member.name}** to **{member.server.name}** :tada: :tada:', description='Please Check <#552842038564093972> and enjoy your stay. :)', color = discord.Color((r << 16) + (g << 8) + b))
@@ -315,7 +265,7 @@ async def jointest(ctx):
 async def leavetest(ctx):
     member = ctx.message.author
     for channel in member.server.channels:
-        if channel.name == 'welacome-bye':
+        if channel.name == 'welcome-bye':
             url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(member)
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(title=f' :confounded: :confounded: **{member.name}** just left **{member.server.name}** :confounded: :confounded:', description='We will miss you a lot. :(', color = discord.Color((r << 16) + (g << 8) + b))
@@ -663,33 +613,6 @@ async def joke(ctx):
         await client.say(str(res.json()['joke']))
     else:
         await client.say('```css\nWhat A Cruel World!```')	
-
-# @client.command(pass_context = True, aliases = ["complain"])
-#async def report(ctx, member: discord.Member=None, *, msg: str=None):
-   # for channel in member.server.channels:
-    #    if channel.name == "》complaints":
-     #     if member is None:
-      #      await client.say(':x: **Oof! Try:** `>complain @user <reason>`')
-       #   if msg is None:
-        #    await client.say(":x: **Oof! Try:** `>complain @user <reason>`")  
-         # else:
-         #     await client.delete_message(ctx.message)
-          #    reactions = ["✅", "❎", "❓"]
-           #   url = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(member)
-            #  crl = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(client.user)
-             # vrl = "https://cdn.discordapp.com/avatars/{0.id}/{0.avatar}.png?size=1024".format(ctx.message.author)
-             # r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-              #embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-             # embed.set_author(name = "Complaint by {}".format(ctx.message.author.name), icon_url=vrl)
-             # embed.set_thumbnail(url=url)
-              #embed.add_field(name = "Complainted User:", value = "{}".format(member.name), inline=False)
-              #embed.add_field(name = "Complainted User ID:", value = "{}".format(member.id), inline=False)
-              #embed.add_field(name = "Complaint:", value = "{}\n\n✅Good | ❎Bad |❓Inappropriate".format(msg), inline=False)
-          #    embed.set_footer(text=f'{client.user.display_name}.xyz', icon_url=f'{crl}')
-           #   embed.timestamp = datetime.datetime.utcnow()
-            #  xd = await client.send_message(channel, embed=embed)
-         #     for emoji in reactions:
-          #      await client.add_reaction(xd, emoji)	
 			
 @client.command(pass_context = True)
 async def dm(ctx, identification:str=None, *, msg: str=None):
@@ -766,13 +689,6 @@ async def economy(ctx):
     embed.set_footer(text=f'WaZiBoT.xyz | WaZiConomy')
     await client.say(embed=embed)	
 
-@client.command(pass_context = True, aliases=["weekly", "hourly", "search", "beg"])
-async def daily(ctx):
-    return
-
-@client.command(pass_context = True, aliases=["bal", "lb", "pay", "setbal", "clearwarn", "removebal"])
-async def work(ctx):
-    return
 
 @client.command(pass_context = True)
 async def fun(ctx):
@@ -960,7 +876,6 @@ async def whois(ctx, user: discord.Member=None):
       embed.add_field(name="__Color__", value=ctx.message.author.color, inline=False)
       embed.add_field(name="__Playing__", value=ctx.message.author.game, inline=False)
       embed.add_field(name="__Nickname__", value=ctx.message.author.nick, inline=False)
-    #  embed.add_field(name="__Is Bot?__", value="False", inline=False)
       embed.add_field(name="__Joined__", value=ctx.message.author.joined_at.strftime("%d %b %Y %H:%M"), inline=False)
       embed.add_field(name="__Created__", value=ctx.message.author.created_at.strftime("%d %b %Y %H:%M"), inline=False)
       embed.set_thumbnail(url=ctx.message.author.avatar_url)
@@ -977,7 +892,6 @@ async def whois(ctx, user: discord.Member=None):
           embed.add_field(name="__Color__", value=user.color, inline=False)
           embed.add_field(name="__Playing__", value=user.game, inline=False)
           embed.add_field(name="__Nickname__", value=user.nick, inline=False)
-        #  embed.add_field(name="__Is Bot?__", value="True", inline=False)
           embed.add_field(name="__Joined At__", value=user.joined_at.strftime("%d %b %Y %H:%M"), inline=False)
           embed.add_field(name="__Created At__", value=user.created_at.strftime("%d %b %Y %H:%M"), inline=False)
           embed.set_thumbnail(url=user.avatar_url)
@@ -993,7 +907,6 @@ async def whois(ctx, user: discord.Member=None):
           embed.add_field(name="__Color__", value=user.color, inline=False)
           embed.add_field(name="__Playing__", value=user.game, inline=False)
           embed.add_field(name="__Nickname__", value=user.nick, inline=False)
-         # embed.add_field(name="__Is Bot?__", value="False", inline=False)
           embed.add_field(name="__Joined__", value=user.joined_at.strftime("%d %b %Y %H:%M"), inline=False)
           embed.add_field(name="__Created__", value=user.created_at.strftime("%d %b %Y %H:%M"), inline=False)
           embed.set_thumbnail(url=user.avatar_url)
@@ -1097,10 +1010,6 @@ async def unmute(ctx, member: discord.Member=None, mutetime=None):
                     await client.send_message(member, "You were unmuted in **{0}**".format(ctx.message.server))
     else:
         await client.say('Sorry! You need to have `Kick_members` permission to use this command.')
-
-@client.command(pass_context = True)
-async def warn(ctx):
-    await client.delete_message(ctx.message)	
 
 @client.command(pass_context = True)
 async def ban(ctx, userName: discord.User, *, reason:str=None):
@@ -1449,7 +1358,7 @@ async def tweet(ctx, *, txt:str=None):
                 await client.say(embed=embed)		
 
 @client.command(pass_context = True)
-async def uargagujre(ctx, *, message: str=None):
+async def sendall(ctx, *, message: str=None):
     if not message:
         return await client.say(":x: Message please :/")
     else:
@@ -1506,4 +1415,4 @@ async def tuxsay(ctx, *, lmao: str=None):
     '''.format(lmao)
         await client.say("```{}```".format(tux))	
 	
-client.run(os.getenv("lmaolol"))
+client.run(os.getenv("bot-token"))
