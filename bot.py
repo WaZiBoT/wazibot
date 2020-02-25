@@ -342,7 +342,6 @@ async def poll(ctx, question, *options: str):
         else:
             reactions = ['1\u20e3', '2\u20e3', '3\u20e3', '4\u20e3', '5\u20e3', '6\u20e3', '7\u20e3', '8\u20e3', '9\u20e3', '\U0001f51f']
         
-        question.split('"')
         description = []
         for x, option in enumerate(options):
             description += '\n {} {}'.format(reactions[x], option)
