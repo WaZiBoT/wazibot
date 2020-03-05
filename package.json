@@ -1,0 +1,39 @@
+{
+  "name": "wazibot",
+  "version": "1.0.0",
+  "description": "WaZifers Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/INEX07/WaZiBoT-V2.git"
+  },
+  "keywords": [
+    "WaZiBoT"
+  ],
+  "author": "INEX07",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/INEX07/WaZiBoT-V2/issues"
+  },
+  "homepage": "https://github.com/INEX07/WaZiBoT-V2#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.1.0",
+    "discord-canvas": "^1.1.0",
+    "discord-ytdl-core": "^1.0.2",
+    "discord.js": "https://github.com/INEX07/discord.js",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "helmet": "^3.21.3",
+    "mongoose": "^5.9.3",
+    "node-fetch": "^2.6.0",
+    "quick.db": "^7.0.0-b22",
+    "rss-parser": "^3.7.5"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}
