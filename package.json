@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/INEX07/WaZiBoT-V2.git"
+    "url": "git+https://github.com/INEX07/WaZiBoT.git"
   },
   "keywords": [
     "WaZiBoT"
@@ -16,9 +16,9 @@
   "author": "INEX07",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/INEX07/WaZiBoT-V2/issues"
+    "url": "https://github.com/INEX07/WaZiBoT/issues"
   },
-  "homepage": "https://github.com/INEX07/WaZiBoT-V2#readme",
+  "homepage": "https://github.com/INEX07/WaZiBoT#readme",
   "dependencies": {
     "@discordjs/opus": "^0.1.0",
     "discord-canvas": "^1.1.0",
