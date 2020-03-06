@@ -22,13 +22,7 @@ class Shuffle extends Command {
       return message.channel.send(`❌ | You're not in my voice channel!`);
     if (queue.songs.length < 3)
       return message.channel.send("❌ | You can't shuffle less than 3 songs.");
-    let songNow = queue.songs[0];
-    let arr = [];
-    arr.push(songNow);
-    queue.songs.shift();
-    let shuffled = queue.songs.shuffle();
-    arr.push(shuffled);
-    queue.songs = arr;
+    queue.songs = queue.songs.shuffle();
     return message.channel.send("✅ | Queue shuffled!");
   }
 }
