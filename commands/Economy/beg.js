@@ -61,3 +61,4 @@ class Beg extends Command {
 }
 
 module.exports = Beg;
+ 
