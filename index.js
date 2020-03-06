@@ -40,7 +40,9 @@ fs.readdir("./commands/", (err, files) => {
     });
 });
 
-client.run();
+client.run().then(() => {
+  require("./handlers/Uploads")(client);
+});;
 
 String.prototype.toProperCase = function() {
   return this.replace(/([^\W_]+[^\s-]*) */g, function(txt) {
