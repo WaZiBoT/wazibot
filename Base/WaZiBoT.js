@@ -1,4 +1,5 @@
 const { Client, Collection } = require("discord.js");
+const PlayerManager = require("../Util/PlayerManager");
 
 class WaZiBoT extends Client {
   /**
@@ -14,6 +15,7 @@ class WaZiBoT extends Client {
     this.db = require("quick.db");
     this.queue = new Map();
     this.request = require("node-fetch");
+    this.player = new PlayerManager(this);
   }
 
   /**
