@@ -16,7 +16,7 @@ class Deposit extends Command {
     if (!amount) return message.channel.send("What r u trying to deposit lmao");
     if (typeof amount === "string" && amount.toLowerCase() === "max") amount = this.client.db.fetch(`money_${message.author.id}`);
     if (isNaN(amount)) amount = 0;
-    if (amount < 0) return message.channel.send("Amount must be a number, greater than 0.");
+    if (amount <= 0) return message.channel.send("Amount must be a number, greater than 0.");
     if (amount > this.client.db.fetch(`money_${message.author.id}`)) return message.channel.send("Amount must be a number, less than your balance.");
     let added = this.client.db.add(`bank_${message.author.id}`, amount);
     this.client.db.subtract(`money_${message.author.id}`, amount);
