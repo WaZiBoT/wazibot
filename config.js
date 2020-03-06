@@ -10,6 +10,6 @@ module.exports = {
   },
   greetingChannel: "678576197906595840",
   logChannel: {
-    modLog: ""
+    modLog: "685390084148559874"
   }
 };
