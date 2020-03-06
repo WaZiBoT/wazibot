@@ -1,6 +1,6 @@
 const Command = require("../../Base/Command");
 
-class Skip extends Command {
+class Stop extends Command {
   constructor(client) {
     super(client, {
       name: "stop",
@@ -26,4 +26,4 @@ class Skip extends Command {
   }
 }
 
-module.exports = Skip;
+module.exports = Stop;
