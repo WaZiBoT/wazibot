@@ -11,5 +11,9 @@ module.exports = {
   greetingChannel: "678576197906595840",
   logChannel: {
     modLog: "685390084148559874"
+  },
+  uploads: {
+    everyone: true,
+    channel: "685402862448148490"
   }
 };
