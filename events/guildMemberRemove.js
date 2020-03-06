@@ -25,12 +25,12 @@ module.exports = class {
             .setMemberCount(member.guild.memberCount)
             .setGuildName("WAZIFERS")
             .setAvatar(member.user.displayAvatarURL({ dynamic: false, format: 'png', size: 1024 }))
-            .setColor("border", "#8015EA")
-            .setColor("username-box", "#8015EA")
-            .setColor("discriminator-box", "#8015EA")
-            .setColor("message-box", "#8015EA")
-            .setColor("title", "#8015EA")
-            .setColor("avatar", "#8015EA")
+            .setColor("border", "#7289DA")
+            .setColor("username-box", "#7289DA")
+            .setColor("discriminator-box", "#7289DA")
+            .setColor("message-box", "#7289DA")
+            .setColor("title", "#7289DA")
+            .setColor("avatar", "#7289DA")
             .setBackground("https://cdn.craftburg.net/stockage/img/discord/background.jpg")
             .toAttachment();
 
