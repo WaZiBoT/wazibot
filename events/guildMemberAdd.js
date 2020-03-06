@@ -32,6 +32,7 @@ module.exports = class {
             .setColor("message-box", "#7289DA")
             .setColor("title", "#7289DA")
             .setColor("avatar", "#7289DA")
+            .setText("message", "welcome to the {server}")
             .setBackground("https://cdn.craftburg.net/stockage/img/discord/background.jpg")
             .toAttachment();
 
