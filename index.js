@@ -41,4 +41,27 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.run();
+
+String.prototype.toProperCase = function() {
+  return this.replace(/([^\W_]+[^\s-]*) */g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+};
+
+Array.prototype.random = function() {
+  return this[Math.floor(Math.random() * this.length)];
+};
+
+Array.prototype.shuffle = function() {
+  for (let i = this.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [this[i], this[j]] = [this[j], this[i]];
+  }
+  return this;
+};
+
+Array.prototype.insert = function(index, item) {
+  this.splice(index, 0, item);
+};
+
 module.exports = client;
