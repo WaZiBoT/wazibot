@@ -26,14 +26,14 @@ module.exports = class {
             .setMemberCount(member.guild.memberCount)
             .setGuildName("WAZIFERS")
             .setAvatar(member.user.displayAvatarURL({ dynamic: false, format: 'png', size: 1024 }))
-            .setColor("border", "#7289DA")
-            .setColor("username-box", "#7289DA")
-            .setColor("discriminator-box", "#7289DA")
-            .setColor("message-box", "#7289DA")
-            .setColor("title", "#7289DA")
-            .setColor("avatar", "#7289DA")
+            .setColor("border", "#355EF2")
+            .setColor("username-box", "#355EF2")
+            .setColor("discriminator-box", "#355EF2")
+            .setColor("message-box", "#355EF2")
+            .setColor("title", "#355EF2")
+            .setColor("avatar", "#355EF2")
             .setText("message", "welcome to the {server}")
-            .setBackground("https://cdn.craftburg.net/stockage/img/discord/background.jpg")
+            .setBackground("https://cdn.glitch.com/6a8e40c8-fe0d-4099-99d2-02952070f31c%2F4f86e964-7944-4fbe-8c8e-ef75b2e3407e.image.png?v=1583548156670")
             .toAttachment();
 
         const attachment = new Discord.MessageAttachment(image.toBuffer(), "welcomer.png");
