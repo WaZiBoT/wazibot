@@ -46,7 +46,8 @@ class PlayerManager {
         volume: 5,
         playing: true,
         loop: false,
-        gain: 0
+        gain: 0,
+        bold: false
       };
       this.client.queue.set(message.guild.id, queueConstruct);
 
@@ -114,7 +115,7 @@ class PlayerManager {
     const outputStream = ytdl(song.url, {
       filter: "audioonly",
       highWaterMark: 1024 * 1024 * 10,
-      encoderArgs: ['-af', `equalizer=f=40:width_type=h:width=50:g=${serverQueue.gain}`]
+      encoderArgs: ["-af", serverQueue.pitchdown && serverQueue.gain < 1 ? `asetrate=44100*0.9,aresample=44100,atempo=1.1` : `equalizer=f=40:width_type=h:width=50:g=${serverQueue.gain}`]
     });
     const dispatcher = serverQueue.connection
       .play(outputStream, {
