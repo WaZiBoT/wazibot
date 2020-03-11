@@ -5,7 +5,7 @@ class Bassboost extends Command {
     super(client, {
       name: "bassboost",
       description: "Bassboost the player.",
-      aliases: [],
+      aliases: ["bb", "bass"],
       usage: [
         "bassboost off",
         "bassboost low",
