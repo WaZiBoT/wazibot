@@ -40,6 +40,32 @@ fs.readdir("./commands/", (err, files) => {
     });
 });
 
+// counter
+client.on("message", async (message) => {
+  let channel = client.channels.cache.get("690456321643773962");
+  if (!channel) return;
+  if (message.channel.id !== channel.id) return;
+  if (message.author.bot && message.author.id !== client.user.id) return message.delete();
+  if (!message.author.bot && isNaN(message.content)) {
+    message.delete();
+    return message.reply("Messages in this channel must be a number.").then(m => m.delete({ timeout: 3000 }));
+  };
+  if (message.author.id === client.user.id) return;
+
+  let num = parseInt(message.content);
+  let parsed = client.db.fetch("counter");
+  if (parsed.author.id === message.author.id) {
+    message.delete();
+    return message.reply("You can't count twice in a row.").then(m => m.delete({ timeout: 3000 }));
+  };
+  if (num !== parsed.value + 1) {
+    message.delete();
+    return message.reply(`Next number must be ${parsed.value + 1}`).then(m => m.delete({ timeout: 3000 }));
+  };
+  client.db.set(`counter`, { value: parsed.value + 1, author: message.author });
+  channel.setTopic(`Next number: ${client.db.fetch(`counter`).value + 1}`);
+});
+
 client.run().then(() => {
   require("./handlers/Uploads")(client);
 });;
