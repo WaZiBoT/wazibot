@@ -1,2 +1,2 @@
 # wazibot
-Under Development
+**Deprecated**
