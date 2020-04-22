@@ -1,6 +1,5 @@
 const WaZiBoT = require("./Base/WaZiBoT");
 const client = new WaZiBoT({
-    disableEveryone: true,
     fetchAllMembers: true
 });
 const fs = require("fs");
