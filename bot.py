@@ -63,13 +63,7 @@ async def on_message(message):
             await client.send_message(message.channel, ":x: {} No inappropriate emoji!".format(message.author.mention))	
         if "🥒" in message.content:
             await client.delete_message(message)
-            await client.send_message(message.channel, ":x: {} No inappropriate emoji!".format(message.author.mention))
-        if message.content.startswith("dafaque"):
-            await client.delete_message(message)
-            await client.send_message(message.channel, ":x: {} No inappropriate words!".format(message.author.mention))
-        if message.content.startswith("chut"):
-            await client.delete_message(message)
-            await client.send_message(message.channel, ":x: {} No inappropriate words!".format(message.author.mention))		
+            await client.send_message(message.channel, ":x: {} No inappropriate emoji!".format(message.author.mention))		
 		
 
 @client.command(pass_context = True)
